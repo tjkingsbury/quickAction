@@ -1,17 +1,11 @@
 <template>
-    <lightning-quick-action-panel header="My action">
-        Here's some content for the modal body.
-
+    <lightning-quick-action-panel header="Quick Contact Edit">
+        <template if:true={account.data}>
+            <lightning-input label="Rating" value={rating} data-field="Rating" class="slds-m-bottom_x-small"></lightning-input>
+        </template>
         <div slot="footer">
-            <lightning-button
-                variant="neutral"
-                label="Cancel"
-            ></lightning-button>
-            <lightning-button
-                variant="brand"
-                label="Save"
-                class="slds-m-left_x-small"
-            ></lightning-button>
+            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+            <lightning-button variant="brand" class="slds-m-left_x-small" label="Save" type="submit" onclick={handleSubmit} disabled={disabled}></lightning-button>
         </div>
     </lightning-quick-action-panel>
 </template>
