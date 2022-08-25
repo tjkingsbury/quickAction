@@ -21,7 +21,7 @@ export default class SlackScreenQuickAction extends LightningElement {
     @api invoke() {
         // Add your slack messaging call here
 
-        // Close the modal window and display a success toast
+        // Display a success toast
         this.dispatchEvent(
             new ShowToastEvent({
                 title: 'Success',
