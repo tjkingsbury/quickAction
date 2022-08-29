@@ -7,6 +7,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ID_FIELD from '@salesforce/schema/Account.Id';
 import OWNERID_FIELD from '@salesforce/schema/Account.OwnerId';
 import RATING_FIELD from '@salesforce/schema/Account.Rating';
+import sendSlackMessage from '@salesforce/apex/SlackQuickActionController.sendSlackMessage';
 
 const FIELDS = [RATING_FIELD,OWNERID_FIELD];
 
@@ -24,22 +25,32 @@ export default class SlackScreenQuickAction extends LightningElement {
     }
 
     handleSubmit(e) {
-        console.log(' sending message: ' + this.message);
         // Add your slack messaging call here
 
-        // Close the modal window and display a success toast
-        this.dispatchEvent(
-            new ShowToastEvent({
-                title: 'Success',
-                message: 'Message Sent',
-                variant: 'success'
+        sendSlackMessage({recordId : this.recordId, message : this.message})
+            .then(() =>{
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: 'Message Sent',
+                        variant: 'success'
+                    })
+                );  
             })
-        );        
+            .catch(error => {
+                this.error = error
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error',
+                        message: error.message,
+                        variant: 'error'
+                    })
+                );
+            });      
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
     handleMessageChange(event) {
         this.message = event.detail.value;
-        console.log('message: ' + this.message);
     }
 }
