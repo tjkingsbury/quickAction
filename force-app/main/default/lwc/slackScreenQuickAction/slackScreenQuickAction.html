@@ -1,9 +1,12 @@
 <template>
     <lightning-quick-action-panel header="Custom Slack Message">
-            <lightning-input label="Message" type="text" value={message} onchange={handleMessageChange} class="slds-m-bottom_x-small"></lightning-input>
+            <lightning-input label="Message" type="text" value={message} onchange={handleMessageChange} class="slds-m-bottom_x-small">
+            </lightning-input>
         <div slot="footer">
-            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
-            <lightning-button variant="brand" class="slds-m-left_x-small" label="Send" type="submit" onclick={handleSubmit}></lightning-button>
+            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}>
+            </lightning-button>
+            <lightning-button variant="brand" class="slds-m-left_x-small" label="Send" type="submit" onclick={handleSubmit}>
+            </lightning-button>
         </div>
     </lightning-quick-action-panel>
 </template>
