@@ -11,8 +11,7 @@ export default class SlackScreenQuickAction extends LightningElement {
     @api invoke() {
         // Add your slack messaging call here
         sendSlackMessage({recordId : this.recordId, message : this.message})
-            .then(result =>{
-                console.log('success');
+            .then(() =>{
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Success',
