@@ -2,8 +2,12 @@
 public with sharing class SlackQuickActionControllerTest {
     
     @isTest
-    private sendMessageTest(){
+    private static void sendMessageTest(){
 
+        slackv2__Message_Destination__c messageDestination = new slackv2__Message_Destination__c();
+        messageDestination.Name = 'df22Slack';
+        insert messageDestination;
+        
         Account acct = new Account();
         acct.Name = 'Sample Account';
         insert acct;
