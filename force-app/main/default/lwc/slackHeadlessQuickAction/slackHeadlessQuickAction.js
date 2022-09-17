@@ -3,9 +3,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import sendSlackMessage from '@salesforce/apex/SlackQuickActionController.sendSlackMessage';
 
 export default class SlackScreenQuickAction extends LightningElement {
-    disabled = false;
     @api recordId;
-    @api objectApiName;
     message = 'This account is red hot!';
 
     @api invoke() {
