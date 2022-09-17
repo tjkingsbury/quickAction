@@ -5,7 +5,6 @@ import sendSlackMessage from '@salesforce/apex/SlackQuickActionController.sendSl
 
 export default class SlackScreenQuickAction extends LightningElement {
     @api recordId;
-    @api objectApiName;
     message;
 
     handleCancel(event) {
